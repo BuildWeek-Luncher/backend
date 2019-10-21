@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/BuildWeek-Luncher/backend.git",
+  "author": "chrisbonifacio <christopher.bonifacio@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
+    "helmet": "^3.21.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.19.5",
+    "dotenv": "^8.2.0",
+    "pg": "^7.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
