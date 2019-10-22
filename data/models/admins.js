@@ -19,7 +19,6 @@ function get(id) {
 }
 
 function getBy(filter) {
-  console.log(filter);
   return db("admins")
     .where(filter)
     .select("*")
