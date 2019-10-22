@@ -28,11 +28,11 @@ module.exports = {
     },
     seeds: {
       directory: "./data/seeds"
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    useNullAsDefault: true
+    }
+    // pool: {
+    //   min: 2,
+    //   max: 10
+    // },
+    // useNullAsDefault: true
   }
 };
