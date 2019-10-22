@@ -12,8 +12,8 @@ server.use(cors());
 server.use(helmet());
 server.use(express.json());
 
-server.use("/api/", authRouter);
-server.use("/api/", schoolRouter);
+server.use("/api/admins", authRouter);
+server.use("/api/schools", schoolRouter);
 
 server.use(errorHandler);
 

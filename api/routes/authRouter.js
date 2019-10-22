@@ -35,7 +35,7 @@ router.post("/login", validateLogin, async (req, res) => {
 });
 
 // GET all admins
-router.get("/admins", async (req, res) => {
+router.get("/", async (req, res) => {
   const admins = await Admins.get();
 
   res.status(200).json(admins);
