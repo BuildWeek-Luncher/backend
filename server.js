@@ -15,4 +15,8 @@ server.use("/api/", authRouter);
 
 server.use(errorHandler);
 
+server.get("/api/", (req, res) => {
+  res.status(200).json({ api: "is running!" });
+});
+
 module.exports = server;
