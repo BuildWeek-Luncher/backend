@@ -2,7 +2,6 @@ require("dotenv").config({ path: "./.env" });
 const pgUser = process.env.PG_USER || "chris";
 const pgDb = process.env.PG_DB || "luncher";
 const pgPass = process.env.PG_PASS;
-// const prodConnection = `postgres://${pgUser}@localhost/${pgDb}`;
 
 module.exports = {
   development: {
