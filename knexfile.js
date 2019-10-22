@@ -7,11 +7,11 @@ const pgPass = process.env.PG_PASS;
 module.exports = {
   development: {
     client: "pg",
-    connection: process.env.DATABASE_URL || {
+    connection: {
       host: "localhost",
-      user: "chris",
+      user: pgUser,
       password: pgPass,
-      database: "luncher"
+      database: pgDb
     },
     migrations: {
       directory: "./data/migrations"
@@ -23,11 +23,11 @@ module.exports = {
   },
   production: {
     client: "pg",
-    connection: process.env.DATABASE_URL || {
-      host: "localhost",
-      user: "chris",
-      password: pgPass,
-      database: "luncher"
+    connection: {
+      host: process.env.DATABASE_URL,
+      user: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PW,
+      database: process.env.DATABASE_NAME
     },
     migrations: {
       directory: "./data/migrations"

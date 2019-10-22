@@ -10,26 +10,16 @@ async function validateRegister(req, res, next) {
   ) {
     next({ code: 400, message: "Please fill in all required fields" });
   } else {
-    try {
-      const { username } = admin;
-      const existingUser = await Admins.getBy({ username: username });
-      console.log("EXISTING USER:", existingUser);
-      console.log("NEW USER:", admin);
+    const existingUser = await Admins.getBy({ username: admin.username });
 
-      if (
-        existingUser.username === admin.username ||
-        existingUser.email === admin.email
-      ) {
-        next({
-          code: 400,
-          message:
-            "Username/email is already taken, please provide valid credentials for all fields"
-        });
-      } else {
-        next();
-      }
-    } catch (error) {
-      next({ code: 400, message: "Could not create new user" });
+    if (existingUser) {
+      next({
+        code: 400,
+        message:
+          "Username/email is already taken, please provide valid credentials for all fields"
+      });
+    } else {
+      next();
     }
   }
 }
