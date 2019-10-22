@@ -18,9 +18,10 @@ exports.up = function(knex) {
       tbl.increments();
       tbl
         .integer("admin_id")
-        .unsigned()
         .references("id")
-        .inTable("admins");
+        .inTable("admins")
+        .notNullable()
+        .onDelete("CASCADE");
       tbl.string("school_name").notNullable();
       tbl.string("address").notNullable();
       tbl.string("city").notNullable();
