@@ -31,7 +31,7 @@ router.post("/login", validateLogin, async (req, res) => {
 
   const token = generateToken(user);
 
-  res.status(200).json({ userData, token });
+  res.status(200).json({ ...userData, token });
 });
 
 // GET all admins
