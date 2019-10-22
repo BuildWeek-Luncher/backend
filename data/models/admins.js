@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function get(id) {
-  if (!id) {
+  if (id) {
     return db("admins")
       .select("*")
       .where({ id });
@@ -19,14 +19,21 @@ function get(id) {
 }
 
 function getBy(filter) {
+  console.log(filter);
   return db("admins")
+    .where(filter)
     .select("*")
-    .where(filter);
+    .first();
 }
 
-async function insert(admin) {
-  await db("admins").insert(admin);
-  return db("admins").getBy({ username: admin.username });
+function insert(admin) {
+  db("admins")
+    .insert(admin)
+    .then(() => {
+      return db("admins")
+        .select("*")
+        .where({ username: admin.username });
+    });
 }
 
 function update(id, changes) {
