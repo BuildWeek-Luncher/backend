@@ -22,12 +22,7 @@ module.exports = {
   },
   production: {
     client: "pg",
-    connection: {
-      host: process.env.DATABASE_HOST,
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PW,
-      database: process.env.DATABASE_NAME
-    },
+    connection: process.env.HEROKU_POSTGRESQL_GRAY_URL,
     migrations: {
       directory: "./data/migrations"
     },
