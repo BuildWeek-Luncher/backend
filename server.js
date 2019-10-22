@@ -2,8 +2,8 @@ const express = require("express");
 const server = express();
 
 const helmet = require("helmet");
-const authRouter = require("./routes/authRouter");
-const errorHandler = require("./routes/middleware/errorHandler");
+const authRouter = require("./api/routes/authRouter");
+const errorHandler = require("./api/middleware/errorHandler");
 
 server.use(helmet());
 server.use(express.json());
