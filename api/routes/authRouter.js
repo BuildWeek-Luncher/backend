@@ -29,11 +29,11 @@ router.post("/register", validateRegister, async (req, res) => {
 // POST to login
 router.post("/login", validateLogin, async (req, res) => {
   const userData = req.body;
-  const user = await Admins.getBy({ username: userData.username });
+  const admin = await Admins.getBy({ username: userData.username });
 
-  const token = generateToken(user);
+  const token = generateToken(admin);
 
-  res.status(200).json({ user, token });
+  res.status(200).json({ admin, token });
 });
 
 // GET all admins
