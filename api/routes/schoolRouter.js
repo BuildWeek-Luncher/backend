@@ -42,6 +42,7 @@ router.post("/:id", async (req, res) => {
   }
 });
 
+// PUT to edit school
 router.put("/:id", async (req, res) => {
   const id = req.params.id;
   const changes = req.body;
