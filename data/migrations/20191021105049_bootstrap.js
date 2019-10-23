@@ -22,7 +22,10 @@ exports.up = function(knex) {
         .inTable("admins")
         .notNullable()
         .onDelete("CASCADE");
-      tbl.string("school_name").notNullable();
+      tbl
+        .string("school_name")
+        .unique()
+        .notNullable();
       tbl.string("address").notNullable();
       tbl.string("city").notNullable();
       tbl.string("state").notNullable();
