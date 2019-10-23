@@ -47,6 +47,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET admin by ID
+router.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const admin = await Admins.get(id);
+    res.status(200).json(admin);
+  } catch (error) {
+    res.status(400).json({ message: "Could not find admin with specified ID" });
+  }
+});
+
 // POST to add new school to admin by ID
 router.post("/:admin_id/school", validateSchool, async (req, res) => {
   const id = req.params.admin_id;
