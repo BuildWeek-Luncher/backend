@@ -2,6 +2,7 @@ const db = require("../dbConfig");
 
 module.exports = {
   get,
+  getBy,
   insert,
   update,
   remove
@@ -17,6 +18,14 @@ function get(id) {
     return db("schools");
   }
 }
+
+function getBy(filter) {
+  return db("schools")
+    .where(filter)
+    .select("*")
+    .first();
+}
+
 function insert(school) {
   return db("schools").insert(school);
 }
