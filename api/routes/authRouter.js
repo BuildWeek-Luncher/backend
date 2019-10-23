@@ -13,6 +13,7 @@ const Schools = require("../../data/models/schools");
 const validateRegister = require("../middleware/validateRegister");
 const validateLogin = require("../middleware/validateLogin");
 const validateSchool = require("../middleware/validateSchool");
+const authenticate = require("../middleware/authenticate");
 
 // POST to register new admin
 router.post("/register", validateRegister, async (req, res) => {
@@ -59,12 +60,16 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST to add new school to admin by ID
-router.post("/:admin_id/school", validateSchool, async (req, res) => {
-  const id = req.params.admin_id;
+router.post("/:id/school", authenticate, validateSchool, async (req, res) => {
+  const id = req.params.id;
   const school = req.body;
-  await Schools.insert({ ...school, admin_id: id });
-  const newSchool = await Schools.getBy({ school_name: school.school_name });
-  res.status(201).json(newSchool);
+  try {
+    await Schools.insert({ ...school, admin_id: id });
+    const newSchool = await Schools.getBy({ school_name: school.school_name });
+    res.status(201).json(newSchool);
+  } catch (error) {
+    res.status(400).json({ message: "Failed to add school" });
+  }
 });
 
 module.exports = router;

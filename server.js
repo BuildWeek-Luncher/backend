@@ -4,8 +4,11 @@ const server = express();
 const helmet = require("helmet");
 const cors = require("cors");
 
+// Routers
 const authRouter = require("./api/routes/authRouter");
 const schoolRouter = require("./api/routes/schoolRouter");
+
+// Middleware
 const errorHandler = require("./api/middleware/errorHandler");
 
 server.use(cors());
@@ -14,7 +17,6 @@ server.use(express.json());
 
 server.use("/api/admins", authRouter);
 server.use("/api/schools", schoolRouter);
-
 server.use(errorHandler);
 
 server.get("/api/", (req, res) => {
