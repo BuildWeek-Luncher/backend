@@ -33,11 +33,13 @@ router.get("/:id", async (req, res) => {
 // PUT to update school
 router.put("/:id", async (req, res) => {
   const id = req.params.id;
-  const changes = req.body;
-  if (Object.keys(changes).length > 1) {
-    res.status(400).json({ message: "Please only provide a donation amount" });
+  const { donation } = req.body;
+  if (!donation) {
+    res.status(400).json({ message: "Please provide a donation amount" });
+  } else {
+    const [fundsRaised] = await Schools.addFunds(id, donation);
+    res.status(200).json(fundsRaised);
   }
-  const fundsRaised = await Schools.update(id, changes);
 });
 
 module.exports = router;

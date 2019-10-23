@@ -9,8 +9,7 @@ async function validateSchool(req, res, next) {
     !school.city ||
     !school.state ||
     !school.zipcode ||
-    !school.funds_needed ||
-    !school.funds_raised
+    !school.funds_needed
   ) {
     next({ code: 400, message: "Please fill in all required fields" });
   } else {
