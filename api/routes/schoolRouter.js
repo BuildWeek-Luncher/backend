@@ -30,8 +30,8 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// PUT to update school
-router.put("/:id", async (req, res) => {
+// PUT to make a donation
+router.post("/:id", async (req, res) => {
   const id = req.params.id;
   const { donation } = req.body;
   if (!donation) {
@@ -39,6 +39,26 @@ router.put("/:id", async (req, res) => {
   } else {
     const [fundsRaised] = await Schools.addFunds(id, donation);
     res.status(200).json(fundsRaised);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  const id = req.params.id;
+  const changes = req.body;
+
+  if (changes.funds_raised || changes.id || changes.admin_id) {
+    res.status(400).json({ message: "Not allowed to edit this information" });
+  } else {
+    try {
+      const oldSchool = await Schools.get(id);
+      await Schools.update(id, changes);
+      const newSchool = await Schools.get(id);
+      res.status(200).json({ was: oldSchool, now: newSchool });
+    } catch (error) {
+      res
+        .status(400)
+        .json({ message: "Could not update school with specified ID" });
+    }
   }
 });
 
