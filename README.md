@@ -49,6 +49,10 @@
 }
 ```
 
+`DELETE /api/admins/:id` - Protected
+
+- delete admin by ID
+
 # Schools
 
 `GET /api/schools`
@@ -67,3 +71,7 @@
 `PUT /api/schools/:admin_id` - Protected
 
 - Edit/Update school information with specified admin ID by sending an object containing any of a school's properties
+
+`DELETE /api/schools/:id` - Protected
+
+- Delete school by admin ID
