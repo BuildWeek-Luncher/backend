@@ -9,28 +9,27 @@ describe("auth router", () => {
   describe("POST /api/register", () => {
     it("should return 400 if body is invalid", () => {
       return request(server)
-        .post("/api/register")
+        .post("/api/admins/register")
         .send({
           username: "chris",
           password: "password",
           email: "tehkount@gmail.com",
-          first_name: "chris",
-          last_name: "bonifacio"
+          first_name: "chris"
         })
         .expect(400)
         .expect("Content-Type", /json/);
     });
     it("should return 200 if body is valid", () => {
       return request(server)
-        .post("/api/register")
+        .post("/api/admins/register")
         .send({
-          username: "dannyrod",
+          username: "mary",
           password: "password",
-          email: "drod@gmail.com",
-          first_name: "Daniel",
-          last_name: "Rodriguez"
+          email: "mary@gmail.com",
+          first_name: "mary",
+          last_name: "moo"
         })
-        .expect(200)
+        .expect(201)
         .expect("Content-Type", /json/);
     });
   });

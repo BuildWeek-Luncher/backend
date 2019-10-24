@@ -37,7 +37,7 @@ function insert(admin) {
 
 function update(id, changes) {
   return db("admins")
-    .update(changes)
+    .update(changes, "*")
     .where({ id });
 }
 

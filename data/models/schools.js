@@ -48,5 +48,5 @@ function addFunds(id, donation) {
 function remove(id) {
   return db("schools")
     .del()
-    .where({ id });
+    .where({ admin_id: id });
 }
