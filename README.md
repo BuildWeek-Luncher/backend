@@ -11,11 +11,11 @@
 - Register new admin by sending an object resembling
 ```js
 {
-	"username":"chrisb",
-	"password":"newyork",
-	"email":"chrisb@gmail.com",
-	"first_name": "Chris",
-	"last_name": "Bonifacio"
+	"username":"admin",
+	"password":"password",
+	"email":"admin@gmail.com",
+	"first_name": "George",
+	"last_name": "Costanza"
 }
 ```
 
@@ -24,7 +24,7 @@
 `POST /api/admins/login`
 
 - Login as admin by sending valid ```{username, password}```
-- Receive a json web token for use as authentication
+- Get a json web token for use as authentication
 
 `GET /api/admins/`
 
@@ -40,7 +40,7 @@
 ```js
 {
 	"school_name":"Summerside High School",
-	"address": "54321 Cayan St",
+	"address": "543 Cayan St",
 	"city":"Waterbury",
 	"state": "Connecticut",
 	"zipcode":"06704",
@@ -62,7 +62,8 @@
 `POST /api/schools/:id`
 
 - Send an object resembling `{ donation: 200 }` to make a donation to a school with specified ID
+- Get the new total amount of funds raised for school with specified ID
 
 `PUT /api/schools/:id`
 
-- Edit/Update school information with specified ID
+- Edit/Update school information with specified ID by sending an object containing any of a school's properties
