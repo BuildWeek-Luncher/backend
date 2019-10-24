@@ -4,7 +4,7 @@
 
 # Working Endpoints
 
-- Admins
+# Admins
 
 `POST /api/admins/register`
 
