@@ -8,11 +8,23 @@
 
 `POST /api/admins/register`
 
-- Register new admin
+- Register new admin by sending an object resembling
+```
+js
+{
+	"username":"chrisb",
+	"password":"newyork",
+	"email":"chrisb@gmail.com",
+	"first_name": "Chris",
+	"last_name": "Bonifacio"
+}```
+
+
 
 `POST /api/admins/login`
 
-- Login as admin
+- Login as admin by sending valid ```{username, password}```
+- Receive a json web token for use as authentication
 
 `GET /api/admins/`
 
@@ -24,7 +36,18 @@
 
 `POST /api/admins/:id/school` - Protected
 
-- Register a school to admin
+- Register a school to admin by sending an object resembling
+```
+js
+{
+	"school_name":"Summerside High School",
+	"address": "54321 Cayan St",
+	"city":"Waterbury",
+	"state": "Connecticut",
+	"zipcode":"06704",
+	"funds_needed": 45000,
+	"funds_raised": 12000
+}```
 
 # Schools
 
