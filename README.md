@@ -9,15 +9,15 @@
 `POST /api/admins/register`
 
 - Register new admin by sending an object resembling
-```
-js
+```js
 {
 	"username":"chrisb",
 	"password":"newyork",
 	"email":"chrisb@gmail.com",
 	"first_name": "Chris",
 	"last_name": "Bonifacio"
-}```
+}
+```
 
 
 
@@ -37,8 +37,7 @@ js
 `POST /api/admins/:id/school` - Protected
 
 - Register a school to admin by sending an object resembling
-```
-js
+```js
 {
 	"school_name":"Summerside High School",
 	"address": "54321 Cayan St",
@@ -47,7 +46,8 @@ js
 	"zipcode":"06704",
 	"funds_needed": 45000,
 	"funds_raised": 12000
-}```
+}
+```
 
 # Schools
 
