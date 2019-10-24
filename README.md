@@ -71,6 +71,7 @@
 `PUT /api/schools/:admin_id` - Protected
 
 - Edit/Update school information with specified admin ID by sending an object containing any of a school's properties
+- No admin is authorized to alter or change a school's admin ID, school ID, or amount of funds raised. Will return an error.
 
 `DELETE /api/schools/:id` - Protected
 
