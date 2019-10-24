@@ -52,8 +52,14 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const admin = await Admins.get(id);
-    res.status(200).json(admin);
+    const [admin] = await Admins.get(id);
+    if (!admin) {
+      res
+        .status(400)
+        .json({ message: "Admin with specified ID does not exist" });
+    } else {
+      res.status(200).json(admin);
+    }
   } catch (error) {
     res.status(400).json({ message: "Could not find admin with specified ID" });
   }
@@ -69,6 +75,31 @@ router.post("/:id/school", authenticate, validateSchool, async (req, res) => {
     res.status(201).json(newSchool);
   } catch (error) {
     res.status(400).json({ message: "Failed to add school" });
+  }
+});
+
+// PUT to update admin by ID
+router.put("/:id", authenticate, async (req, res) => {
+  const id = req.params.id;
+  const changes = req.body;
+
+  try {
+    const admin = await Admins.update(id, changes);
+    res.status(200).json(admin);
+  } catch (error) {}
+});
+
+// DELETE admin by ID
+
+router.delete("/:id", authenticate, async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Admins.remove(id);
+    res
+      .status(200)
+      .json({ message: "Admin account has been successfully deleted" });
+  } catch (error) {
+    res.status(400).json({ message: "Could not delete account" });
   }
 });
 
