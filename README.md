@@ -64,6 +64,6 @@
 - Send an object resembling `{ donation: 200 }` to make a donation to a school with specified ID
 - Get the new total amount of funds raised for school with specified ID
 
-`PUT /api/schools/:id`
+`PUT /api/schools/:admin_id` - Protected
 
-- Edit/Update school information with specified ID by sending an object containing any of a school's properties
+- Edit/Update school information with specified admin ID by sending an object containing any of a school's properties
