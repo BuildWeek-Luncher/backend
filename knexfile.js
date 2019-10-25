@@ -1,6 +1,6 @@
 require("dotenv").config({ path: "./.env" });
-const pgUser = process.env.PG_USER || "chris";
-const pgDb = process.env.PG_DB || "luncher";
+const pgUser = process.env.PG_USER;
+const pgDb = process.env.PG_DB;
 const pgPass = process.env.PG_PASS;
 
 module.exports = {
